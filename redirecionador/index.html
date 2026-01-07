@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  window.pixelId = "69590005f325e8a5768e1bfa";
+  var a = document.createElement("script");
+  a.setAttribute("async", "");
+  a.setAttribute("defer", "");
+  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+  document.head.appendChild(a);
+</script>
+<script
+  src="../../cdn.utmify.com.br/scripts/utms/latest.js"
+  data-utmify-prevent-subids
+  async
+  defer
+></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecionamento</title>
+</head>
+<body>
+<script>
+    // Função para obter parâmetros da URL
+    function getQueryParams() {
+        const params = new URLSearchParams(window.location.search);
+        return {
+            name: params.get('name') || '',
+            document: params.get('document') || '',
+            email: params.get('email') || '',
+            telephone: params.get('telephone') || ''
+        };
+    }
+
+    // Função para obter o número de vezes que o usuário visitou a página
+    function getVisitCount() {
+        return parseInt(localStorage.getItem('visitCount')) || 0;
+    }
+
+    // Função para redirecionar com base no número de visitas
+    function redirectToPage() {
+        const visitCount = getVisitCount();
+        const queryParams = getQueryParams();
+
+        // Determina a página de redirecionamento com base no número de visitas
+        let nextPage;
+        switch (visitCount) {
+            case 0:
+                nextPage = 'https://ocafecomdeuspai.vercel.app/tenf';
+                break;
+            case 1:
+                nextPage = 'https://ocafecomdeuspai.vercel.app/frete';
+                break;
+            case 2:
+                nextPage = 'https://ocafecomdeuspai.vercel.app/receita';
+                break;
+            case 3:
+                nextPage = '';
+                break;
+            case 4:
+                nextPage = '';
+                break;
+            case 5:
+                nextPage = '';
+                break;
+            case 6:
+                nextPage = '';
+                break;
+        }
+
+        // Incrementa o número de visitas
+        localStorage.setItem('visitCount', visitCount + 1);
+
+        // Adiciona os parâmetros `name`, `document`, `email`, `telephone` e `visitCount` à URL
+        const params = new URLSearchParams({
+            name: queryParams.name,
+            document: queryParams.document,
+            email: queryParams.email,
+            telephone: queryParams.telephone, // Adiciona o telefone
+            visitCount: visitCount
+        });
+
+        // Redireciona para a próxima página com os parâmetros
+        window.location.href = `${nextPage}?${params.toString()}`;
+    }
+
+    // Chama a função de redirecionamento quando a página é carregada
+    redirectToPage();
+</script>
+
+<!-- Scripts adicionais mantidos do código original -->
+<script type="text/javascript">
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+            e.preventDefault();
+        }
+    });
+
+    document.onkeypress = function(event) {
+        event = event || window.event;
+        if ([123, 93, 85, 80, 44, 73].includes(event.keyCode)) {
+            return false;
+        }
+    };
+
+    document.onmousedown = function(event) {
+        event = event || window.event;
+        if ([123, 93, 85, 80, 44, 73].includes(event.keyCode)) {
+            return false;
+        }
+    };
+
+    document.onkeydown = function(event) {
+        event = event || window.event;
+        if ([123, 93, 85, 80, 44, 73].includes(event.keyCode)) {
+            return false;
+        }
+    };
+</script>
+
+<!-- Outros scripts mantidos -->
+<script disable-devtool-auto="" src="https://cdn.jsdelivr.net/npm/disable-devtool" url="https://google.com.br"></script>
+<script disable-devtool-auto="" src="https://cdn.jsdelivr.net/npm/disable-devtool" url="https://google.com.br"></script>
+
+</body>
+</html>

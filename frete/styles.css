@@ -1,0 +1,227 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+}
+
+/* Barra no topo */
+.top-bar {
+    width: 100%;
+    height: auto;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.top-bar img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Seção de tela cheia */
+.full-screen-section {
+    width: 100%;
+    min-height: calc(100vh - 117px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+    position: relative;
+}
+
+/* Estilo do conteúdo da verificação */
+.verification-content {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.verification-content h1 {
+    font-size: 6vw;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.verification-content p {
+    font-size: 4.5vw;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Barra de progresso */
+.progress-bar {
+    width: 100%;
+    height: 15px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    margin: 20px auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress {
+    width: 0;
+    height: 100%;
+    background-color: #28a745;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: width 5s linear;
+    box-shadow: 0 0 20px rgba(40, 167, 69, 0.7); /* Efeito de brilho */
+}
+
+/* Efeito de brilho ao carregar */
+.progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -5px;
+    height: 100%;
+    width: 20px;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+    animation: shine 2s infinite linear;
+    opacity: 0.6;
+}
+
+@keyframes shine {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(100%);
+    }
+}
+
+/* Seção escondida inicialmente */
+.hidden {
+    display: none;
+}
+
+/* Estilo das caixas de informação */
+.box-stage {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    margin-bottom: 15px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUpSmooth 1.5s forwards;
+    transform: translateZ(0); /* Força renderização precisa */
+}
+
+/* Animação suavizada para a aparição das boxes */
+@keyframes fadeInUpSmooth {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Controle de suavização de fontes para evitar pixelização */
+.box-stage h3, .box-stage p {
+    -webkit-font-smoothing: antialiased; /* Ativa suavização leve */
+    -moz-osx-font-smoothing: grayscale; /* Suavização em sistemas macOS */
+    font-smoothing: antialiased;
+}
+
+.box-stage h3 {
+    font-size: 5vw;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.box-stage p {
+    font-size: 4.5vw;
+    color: #666;
+}
+
+/* Botão pulsante */
+.retry-button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    font-size: 5vw;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    animation: pulse 1.5s infinite;
+    text-decoration: none;
+    display: inline-block;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 600px) {
+    .full-screen-section {
+        min-height: 100vh; /* Garante que a altura se ajuste à tela */
+    }
+
+    .box-stage {
+        width: 95%; /* Reduz a largura das boxes para evitar que saiam da tela */
+        margin-bottom: 15px;
+    }
+
+    .retry-button {
+        font-size: 4.5vw;
+    }
+}
+
+/* Ajustes para telas maiores */
+@media (min-width: 600px) {
+    .verification-content h1,
+    .box-stage h3 {
+        font-size: 24px;
+    }
+
+    .verification-content p,
+    .box-stage p {
+        font-size: 18px;
+    }
+
+    .retry-button {
+        font-size: 18px;
+        padding: 15px 25px;
+    }
+}
